@@ -1,9 +1,14 @@
 {
-  "culture": "ar",
-  "texts": {
-    "AppName": "BookStore",
+  "Culture": "ar",
+  "Texts": {
     "Menu:Home": "الصفحة الرئيسية",
-    "Welcome": "مرحباً",
-    "LongWelcomeMessage": "مرحبا بكم في التطبيق. هذا مشروع بدء تشغيل يعتمد على إطار عمل ABP. لمزيد من المعلومات ، يرجى زيارة abp.io."
+    "Menu:BookStore": "متجر الكتب",
+    "Menu:Books": "الكتب",
+    "Name": "الاسم",
+    "Type": "النوع",
+    "Price": "السعر",
+    "PublishDate": "تاريخ النشر",
+    "Enum:BookType.3": "أدب المدينة الفاسدة (ديستوبيا)",
+    "Enum:BookType.7": "خيال علمي"
   }
 }

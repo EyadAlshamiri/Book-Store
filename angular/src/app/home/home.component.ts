@@ -89,4 +89,7 @@ export class HomeComponent {
   login() {
     this.authService.navigateToLogin();
   }
+
+
+
 }
