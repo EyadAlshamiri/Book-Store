@@ -6,7 +6,15 @@
           {{ '::Menu:Books' | abpLocalization }}
         </h5>
       </div>
-      <div class="text-end col col-md-6"></div>
+      <div class="text-end col col-md-6">
+        <!-- Add the "new book" button here -->
+        <div class="text-lg-end pt-2">
+          <button id="create" class="btn btn-primary" type="button" (click)="createBook()">
+            <i class="fa fa-plus me-1"></i>
+            <span>{{ '::NewBook' | abpLocalization }}</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="card-body">
@@ -30,3 +38,54 @@
     </ngx-datatable>
   </div>
 </div>
+
+<!-- Add the modal here -->
+<abp-modal [(visible)]="isModalOpen">
+  <ng-template #abpHeader>
+    <h3>{{ '::NewBook' | abpLocalization }}</h3>
+  </ng-template>
+
+  <ng-template #abpBody>
+    <form [formGroup]="form" id="bookForm" (ngSubmit)="save()">
+
+      <div class="mt-2">
+        <label for="book-name">Name</label><span> * </span>
+        <input type="text" id="book-name" class="form-control" formControlName="name" autofocus />
+      </div>
+
+      <div class="mt-2">
+        <label for="book-price">Price</label><span> * </span>
+        <input type="number" id="book-price" class="form-control" formControlName="price" />
+      </div>
+
+      <div class="mt-2">
+        <label for="book-type">Type</label><span> * </span>
+        <select class="form-control" id="book-type" formControlName="type">
+          <option [ngValue]="null">Select a book type</option>
+          @for (type of bookTypes; track type) {
+            <option [ngValue]="type.value">
+              {{ '::Enum:BookType.' + type.value | abpLocalization }}
+            </option>
+          }
+        </select>
+      </div>
+
+      <div class="mt-2">
+        <label for="book-publish-date">Publish date</label><span> * </span>
+        <input type="date" id="book-publish-date" class="form-control" formControlName="publishDate" />
+      </div>
+
+    </form>
+  </ng-template>
+
+  <ng-template #abpFooter>
+    <button type="button" class="btn btn-secondary" abpClose>
+        {{ '::Close' | abpLocalization }}
+    </button>
+
+    <button type="submit" form="bookForm" class="btn btn-primary" [disabled]="form.invalid">
+        <i class="fa fa-check mr-1"></i>
+        {{ '::Save' | abpLocalization }}
+    </button>
+  </ng-template>
+</abp-modal>
