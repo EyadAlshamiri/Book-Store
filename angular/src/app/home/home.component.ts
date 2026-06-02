@@ -7,7 +7,7 @@ import { DynamicFormComponent, FormFieldConfig } from '@abp/ng.components/dynami
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [NgTemplateOutlet, LocalizationPipe, DynamicFormComponent],
+  imports: [NgTemplateOutlet, LocalizationPipe ], // DynamicFormComponent
 })
 export class HomeComponent {
   private authService = inject(AuthService);
